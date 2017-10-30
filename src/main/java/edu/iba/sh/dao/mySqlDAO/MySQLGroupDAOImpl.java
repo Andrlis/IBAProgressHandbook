@@ -1,8 +1,4 @@
-package edu.iba.sh.dao.db2DAO;
-
-import edu.iba.sh.dao.GroupDAO;
-import edu.iba.sh.dao.DAOException;
-import edu.iba.sh.bean.Group;
+package edu.iba.sh.dao.mySqlDAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,21 +7,24 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DB2GroupDAOImpl extends AbstractDB2DAO implements GroupDAO {
+import edu.iba.sh.bean.Group;
+import edu.iba.sh.dao.DAOException;
+import edu.iba.sh.dao.GroupDAO;
 
+public class MySQLGroupDAOImpl extends AbstractSqlDAO implements GroupDAO {
     private final static String GET_ALL_QUERY =
-            "SELECT GROUP_NUMBER, AVG_MARK FROM LAPUSHA.GROUPS";
+            "SELECT GROUP_NUMBER, AVG_MARK FROM ibastudentshelper.groups";
     private final static String GET_BY_NUMBER_QUERY =
-            "SELECT GROUP_NUMBER, AVG_MARK FROM LAPUSHA.GROUPS"
+            "SELECT GROUP_NUMBER, AVG_MARK FROM ibastudentshelper.groups"
                     + " WHERE GROUP_NUMBER = ?";
     private final static String SAVE_QUERY =
-            "INSERT INTO LAPUSHA.GROUPS (GROUP_NUMBER, AVG_MARK)"
+            "INSERT INTO ibastudentshelper.groups (GROUP_NUMBER, AVG_MARK)"
                     + " VALUES (?, ?)";
     private final static String UPDATE_QUERY =
-            "UPDATE LAPUSHA.GROUPS SET AVG_MARK = ?"
+            "UPDATE ibastudentshelper.groups SET AVG_MARK = ?"
                     + " WHERE GROUP_NUMBER = ?";
     private final static String REMOVE_QUERY =
-            "DELETE FROM LAPUSHA.GROUPS WHERE GROUP_NUMBER = ?";
+            "DELETE FROM ibastudentshelper.groups WHERE GROUP_NUMBER = ?";
 
     @Override
     public Group getGroupByNumber(int number) throws DAOException {
@@ -50,9 +49,7 @@ public class DB2GroupDAOImpl extends AbstractDB2DAO implements GroupDAO {
         } catch (SQLException e) {
             throw new DAOException();
         } finally {
-            closeDB2Res(resultSet);
-            closeDBStatement(statement);
-            closeDBConnection(connection);
+            closeDB(connection, statement, resultSet);
         }
 
         return group;
@@ -81,10 +78,8 @@ public class DB2GroupDAOImpl extends AbstractDB2DAO implements GroupDAO {
         } catch (SQLException e) {
             throw new DAOException();
         } finally {
-            closeDB2Res(resultSet);
-            closeDBStatement(statement);
-            closeDBConnection(connection);
-        }
+            closeDB(connection, statement, resultSet);
+            }
 
         return groups;
     }
@@ -105,8 +100,7 @@ public class DB2GroupDAOImpl extends AbstractDB2DAO implements GroupDAO {
         } catch (SQLException e) {
             throw new DAOException();
         } finally {
-            closeDBStatement(statement);
-            closeDBConnection(connection);
+            closeDB(connection, statement);
         }
     }
 
@@ -126,8 +120,7 @@ public class DB2GroupDAOImpl extends AbstractDB2DAO implements GroupDAO {
         } catch (SQLException e) {
             throw new DAOException();
         } finally {
-            closeDBStatement(statement);
-            closeDBConnection(connection);
+            closeDB(connection, statement);
         }
     }
 
@@ -144,8 +137,8 @@ public class DB2GroupDAOImpl extends AbstractDB2DAO implements GroupDAO {
         } catch (SQLException e) {
             throw new DAOException();
         } finally {
-            closeDBStatement(statement);
-            closeDBConnection(connection);
-        }
+            closeDB(connection, statement);
+           }
     }
+
 }

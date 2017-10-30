@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.iba.sh.bean.Mark;
 import edu.iba.sh.bean.Student;
 import edu.iba.sh.dao.DAOException;
 import edu.iba.sh.dao.StudentDAO;
