@@ -28,7 +28,7 @@ public class UserList extends HttpServlet {
 		try{
 			List<User> users = DAOFactory.getUserDao().getAllUsers();
 			request.setAttribute("users", users);
-			request.getRequestDispatcher("WEB-INF/pages/UserList.jsp").forward(request, response);
+			request.getRequestDispatcher("JSP/UserList.jsp").forward(request, response);
 		}catch(DAOException e){
 			throw new ServletException(e);
 		}

@@ -24,7 +24,7 @@ public class DB2StudyDAOImpl extends AbstractDB2DAO implements StudyDAO {
             "INSERT INTO LAPUSHA.STUDIES (ID, NAME, HOURS, PROFESSOR_ID, AVG_MARK)"
                     + " VALUES (?, ?, ?, ?, ?)";
     private final static String UPDATE_QUERY =
-            "UPDATE LAPUSHA.USERS SET NAME = ?, HOURS = ?, PROFESSOR_ID = ?, AVG_MARK = ?"
+            "UPDATE LAPUSHA.STUDIES SET NAME = ?, HOURS = ?, PROFESSOR_ID = ?, AVG_MARK = ?"
                     + " WHERE ID = ?";
     private final static String REMOVE_QUERY =
             "DELETE FROM LAPUSHA.STUDIES WHERE ID = ?";
@@ -44,7 +44,12 @@ public class DB2StudyDAOImpl extends AbstractDB2DAO implements StudyDAO {
             resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
-                //todo
+                study = new Study();
+                study.setId(resultSet.getInt("ID"));
+                study.setName(resultSet.getString("NAME"));
+                study.setHours(resultSet.getInt("HOURS"));
+                study.setProfessorId(resultSet.getInt("PROFESSOR_ID"));
+                study.setAvgMark(resultSet.getDouble("AVG_MARK"));
             }
         } catch (SQLException e) {
             throw new DAOException();

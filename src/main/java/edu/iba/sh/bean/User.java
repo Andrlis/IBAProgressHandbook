@@ -4,7 +4,8 @@ public class User {
 	private String user;
 	private String password;
 	private String role;
-	public String getUser() {
+
+    public String getUser() {
 		return user;
 	}
 	public void setUser(String user) {
@@ -22,6 +23,7 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

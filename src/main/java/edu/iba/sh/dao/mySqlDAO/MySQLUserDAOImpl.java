@@ -11,22 +11,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.iba.sh.dao.UserDAO;
-
 public class MySQLUserDAOImpl extends AbstractSqlDAO implements UserDAO {
     private final static String GET_ALL_QUERY =
-            "SELECT \"USER\", PASSWORD, ROLE FROM ibastudentshelper.users";
+            "SELECT USER, PASSWORD, ROLE FROM ibastudentshelper.users";
     private final static String GET_BY_ID_QUERY =
-            "SELECT \"USER\", PASSWORD, ROLE FROM ibastudentshelper.users"
+            "SELECT USER, PASSWORD, ROLE FROM ibastudentshelper.users"
                     + " WHERE LAPUSHA.USER = ?";
     private final static String SAVE_QUERY =
-            "INSERT INTO ibastudentshelper.users (\"USER\", PASSWORD, ROLE)"
+            "INSERT INTO ibastudentshelper.users (USER, PASSWORD, ROLE)"
                     + " VALUES (?, ?, ?)";
     private final static String UPDATE_QUERY =
-            "UPDATE ibastudentshelper.user SET PASSWORD = ?, ROLE = ?"
-                    + " WHERE \"USER\" = ?";
+            "UPDATE ibastudentshelper.users SET PASSWORD = ?, ROLE = ?"
+                    + " WHERE USER = ?";
     private final static String REMOVE_QUERY =
-            "DELETE FROM LAPUSHA.USERS WHERE \"USER\" = ?";
+            "DELETE FROM ibastudentshelper.users WHERE USER = ?";
 
     @Override
     public User getUserById(String id) throws DAOException {
@@ -45,6 +43,7 @@ public class MySQLUserDAOImpl extends AbstractSqlDAO implements UserDAO {
             if (resultSet.next()) {
                 user.setUser(resultSet.getString("USER"));
                 user.setPassword(resultSet.getString("PASSWORD"));
+                user.setRole(resultSet.getString("ROLE"));
             }
         } catch (SQLException e) {
             throw new DAOException();
@@ -72,6 +71,7 @@ public class MySQLUserDAOImpl extends AbstractSqlDAO implements UserDAO {
                 User user = new User();
                 user.setUser(resultSet.getString("USER"));
                 user.setPassword(resultSet.getString("PASSWORD"));
+                user.setRole(resultSet.getString("ROLE"));
 
                 users.add(user);
             }
@@ -95,7 +95,7 @@ public class MySQLUserDAOImpl extends AbstractSqlDAO implements UserDAO {
             statement = connection.prepareStatement(SAVE_QUERY);
             statement.setString(1, user.getUser());
             statement.setString(2, user.getPassword());
-            statement.setString(3, user.getRole().toString());
+            statement.setString(3, user.getRole());
 
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -106,7 +106,7 @@ public class MySQLUserDAOImpl extends AbstractSqlDAO implements UserDAO {
     }
 
     @Override
-    public void udateUser(String name, User user) throws DAOException {
+    public void updateUser(String name, User user) throws DAOException {
         Connection connection = null;
         PreparedStatement statement = null;
 
@@ -115,7 +115,7 @@ public class MySQLUserDAOImpl extends AbstractSqlDAO implements UserDAO {
 
             statement = connection.prepareStatement(UPDATE_QUERY);
             statement.setString(1, user.getPassword());
-            statement.setString(2, user.getRole().toString());
+            statement.setString(2, user.getRole());
             statement.setString(3, name);
 
             statement.executeUpdate();

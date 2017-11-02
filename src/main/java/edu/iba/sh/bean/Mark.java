@@ -45,7 +45,6 @@ public class Mark {
 		this.professorId = professorId;
 	}
 
-
 	public int getMark() {
 		return mark;
 	}

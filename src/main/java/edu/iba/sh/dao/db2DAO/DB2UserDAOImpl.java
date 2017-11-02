@@ -45,6 +45,7 @@ public class DB2UserDAOImpl extends AbstractDB2DAO implements UserDAO{
             if (resultSet.next()) {
                 user.setUser(resultSet.getString("USER"));
                 user.setPassword(resultSet.getString("PASSWORD"));
+                user.setRole(resultSet.getString("ROLE"));
             }
         } catch (SQLException e) {
             throw new DAOException();
@@ -74,6 +75,7 @@ public class DB2UserDAOImpl extends AbstractDB2DAO implements UserDAO{
                 User user = new User();
                 user.setUser(resultSet.getString("USER"));
                 user.setPassword(resultSet.getString("PASSWORD"));
+                user.setRole(resultSet.getString("ROLE"));
 
                 users.add(user);
             }
@@ -98,7 +100,7 @@ public class DB2UserDAOImpl extends AbstractDB2DAO implements UserDAO{
             statement = connection.prepareStatement(SAVE_QUERY);
             statement.setString(1, user.getUser());
             statement.setString(2, user.getPassword());
-            statement.setString(3, user.getRole().toString());
+            statement.setString(3, user.getRole());
 
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -110,7 +112,7 @@ public class DB2UserDAOImpl extends AbstractDB2DAO implements UserDAO{
     }
 
     @Override
-    public void udateUser(String name, User user) throws DAOException {
+    public void updateUser(String name, User user) throws DAOException {
         Connection connection = null;
         PreparedStatement statement = null;
 
@@ -119,7 +121,7 @@ public class DB2UserDAOImpl extends AbstractDB2DAO implements UserDAO{
 
             statement = connection.prepareStatement(UPDATE_QUERY);
             statement.setString(1, user.getPassword());
-            statement.setString(2, user.getRole().toString());
+            statement.setString(2, user.getRole());
             statement.setString(3, name);
 
             statement.executeUpdate();
