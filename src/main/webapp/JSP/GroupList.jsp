@@ -15,9 +15,26 @@
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <meta name="Group list"
           content="Rational® Application Developer for WebSphere® Software">
+    <style type="text/css">
+        .mainForm{
+            display: flex;
+            position: center;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border: 2px solid #006598;
+            border-radius: 6px;
+            background: #F5F5F5;
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
-<table>
+<div class="mainForm">
+    <h1>GroupList</h1>
+<table border="1" align="center" width="70%" bordercolor="#006598" cellspacing="0" cellpadding="2">
     <tr>
         <th>Group name</th><th>AVG mark</th>
     </tr>
@@ -27,5 +44,6 @@
         </tr>
     </c:forEach>
 </table>
+</div>
 </body>
 </html>

@@ -10,19 +10,37 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="User form"
 	content="Rational® Application Developer for WebSphere® Software">
+    <style type="text/css">
+        .mainForm{
+            display: flex;
+            position: center;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border: 2px solid #006598;
+            border-radius: 6px;
+            background: #F5F5F5;
+            width: 30%;
+            margin: auto;
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
+<div class="mainForm">
 	<form action="UserSave" method="post">
-		<input type="hidden" name="oldUser" value="${user.user}"><br>
-		User: <input type="text" name="user" value="${user.user}"><br>
-		Password: <input type="password" name="password" value="${user.password}"><br>
-		Role: <input name="role" value="${user.role}"><br>
-		<input type="submit" value="SAVE"><br>
+        <input type="hidden" name="oldUser" value="${user.user}"><br>
+        <table>
+            <tr><td>User:</td><td><input type="text" name="user" value="${user.user}"></td></tr>
+            <tr><td>Password:</td><td><input type="password" name="password" value="${user.password}"></td></tr>
+            <tr><td>Role:</td><td><input name="role" value="${user.role}"></td></tr>
+        </table>
+        <input type="submit" value="SAVE"><br>
 	</form>
 	<form action="#">
 		<input type="hidden" name="oldUser" value="$user.user}"><br>
 		<input type="submit" value="DELETE"><br>
 	</form>
-
+</div>
 </body>
 </html>
