@@ -13,12 +13,12 @@ import edu.iba.sh.dao.StudentDAO;
 
 public class MySQLStudentDAOImpl extends AbstractSqlDAO implements StudentDAO {
 
-    private final static String GET_ALL_QUERY = "SELECT ID, FIRST_NAME, SECOND_NAME, AVG_MARK, GROUP-NUMBER"
+    private final static String GET_ALL_QUERY = "SELECT ID, FIRST_NAME, SECOND_NAME, AVG_MARK, GROUP_NUMBER"
             +" FROM ibastudentshelper.students";
-    private final static String GET_BY_ID_QUERY = "SELECT ID, FIRST_NAME, SECOND_NAME, AVG_MARK, GROUP-NUMBER"
+    private final static String GET_BY_ID_QUERY = "SELECT ID, FIRST_NAME, SECOND_NAME, AVG_MARK, GROUP_NUMBER"
             +" FROM ibastudentshelper.students"
             +" WHERE ID = ?";
-    private final static String GET_BY_GROUP_NUMBER_QUERY = "SELECT ID, FIRST_NAME, SECOND_NAME, AVG_MARK, GROUP-NUMBER"
+    private final static String GET_BY_GROUP_NUMBER_QUERY = "SELECT ID, FIRST_NAME, SECOND_NAME, AVG_MARK, GROUP_NUMBER"
             +" FROM ibastudentshelper.students"
             +" WHERE STUDENT_ID = ?";
     private final static String SAVE_QUERY = "INSERT INTO ibastudentshelper.students"

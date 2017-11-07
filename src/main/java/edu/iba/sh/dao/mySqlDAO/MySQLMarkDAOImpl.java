@@ -13,22 +13,22 @@ import java.util.List;
 
 public class MySQLMarkDAOImpl extends AbstractSqlDAO implements MarkDAO{
     private final static String GET_ALL_QUERY = "SELECT ID, STUDY_ID, STUDENT_ID, DATE, PROFESSOR_ID, MARK, COMMENTS"
-            + "FROM ibastudentshelper.marks";
+            + " FROM ibastudentshelper.marks";
     private final static String GET_BY_ID_QUERY = "SELECT ID, STUDY_ID, STUDENT_ID, DATE, PROFESSOR_ID, MARK, COMMENTS"
-            + "FROM ibastudentshelper.marks"
+            + " FROM ibastudentshelper.marks"
             +" WHERE ID = ?";
     private final static String GET_BY_STUDENT_ID_QUERY = "SELECT ID, STUDY_ID, STUDENT_ID, DATE, PROFESSOR_ID, MARK, COMMENTS"
-            + "FROM ibastudentshelper.marks"
+            + " FROM ibastudentshelper.marks"
             +" WHERE STUDENT_ID = ?";
     private final static String GET_BY_STUDY_ID_QUERY = "SELECT ID, STUDY_ID, STUDENT_ID, DATE, PROFESSOR_ID, MARK, COMMENTS"
-            + "FROM ibastudentshelper.marks"
+            + " FROM ibastudentshelper.marks"
             +" WHERE STUDY_ID = ?";
     private final static String GET_BY_PROFESSOR_ID_QUERY = "SELECT ID, STUDY_ID, STUDENT_ID, DATE, PROFESSOR_ID, MARK, COMMENTS"
-            + "FROM ibastudentshelper.marks"
+            + " FROM ibastudentshelper.marks"
             +" WHERE PROFESSOR_ID = ?";
     private final static String SAVE_QUERY = "INSERT INTO ibastudentshelper.marks"
-            +"(ID, STUDY_ID, STUDENT_ID, DATE, PROFESSOR_ID, MARK, COMMENTS)"
-            +" VALUES (?, ?, ?, ?, ?, ?, ?)";
+            + " (ID, STUDY_ID, STUDENT_ID, DATE, PROFESSOR_ID, MARK, COMMENTS)"
+            + " VALUES (?, ?, ?, ?, ?, ?, ?)";
     private final static String UPDATE_QUERY = "UPDATE ibastudentshelper.marks SET"
             +" STUDY_ID = ?, STUDENT_ID = ?, DATE = ?, PROFESSOR_ID = ?"
             +" MARK = ?, COMMENTS = ?"
@@ -87,10 +87,10 @@ public class MySQLMarkDAOImpl extends AbstractSqlDAO implements MarkDAO{
 
 
                 mark.setId(resultSet.getInt("ID"));
-                mark.setStudentId(resultSet.getInt("STUDENT_ID"));
-                mark.setProfessorId(resultSet.getInt("PROFESSOR_ID"));
                 mark.setStudyId(resultSet.getInt("STUDY_ID"));
+                mark.setStudentId(resultSet.getInt("STUDENT_ID"));
                 mark.setDate(resultSet.getString("DATE"));
+                mark.setProfessorId(resultSet.getInt("PROFESSOR_ID"));
                 mark.setMark(resultSet.getInt("MARK"));
                 mark.setComments(resultSet.getString("COMMENTS"));
 

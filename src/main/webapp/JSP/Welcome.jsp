@@ -66,8 +66,8 @@
     </div>
     <table class="linkTable">
         <tr><td><a href="UserList">Users</a></td><td><a href="StudentList">Students</a></td></tr>
-        <tr><td><a href="#">Studies</a></td><td><a href="#">Marks</a></td></tr>
-        <tr><td><a href="#">Groups</a></td><td><a href="#">Professors</a></td></tr>
+        <tr><td><a href="#">Studies</a></td><td><a href="MarkList">Marks</a></td></tr>
+        <tr><td><a href="GroupList">Groups</a></td><td><a href="ProfessorList">Professors</a></td></tr>
     </table>
 </div>
 </body>
