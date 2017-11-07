@@ -1,4 +1,4 @@
-package edu.iba.sh.servlets;
+package edu.iba.sh.servlets.delete;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

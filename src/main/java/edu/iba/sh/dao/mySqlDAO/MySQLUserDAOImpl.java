@@ -16,7 +16,7 @@ public class MySQLUserDAOImpl extends AbstractSqlDAO implements UserDAO {
             "SELECT USER, PASSWORD, ROLE FROM ibastudentshelper.users";
     private final static String GET_BY_ID_QUERY =
             "SELECT USER, PASSWORD, ROLE FROM ibastudentshelper.users"
-                    + " WHERE LAPUSHA.USER = ?";
+                    + " WHERE ibastudentshelper.users = ?";
     private final static String SAVE_QUERY =
             "INSERT INTO ibastudentshelper.users (USER, PASSWORD, ROLE)"
                     + " VALUES (?, ?, ?)";

@@ -1,40 +1,34 @@
-package edu.iba.sh.servlets;
+package edu.iba.sh.servlets.show;
+
+import edu.iba.sh.dao.DAOException;
+import edu.iba.sh.dao.DAOFactory;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
-import edu.iba.sh.dao.DAOException;
-import edu.iba.sh.dao.DAOFactory;
 import edu.iba.sh.bean.User;
 
 /**
- * Servlet implementation class UserForm
+ * Servlet implementation class UserList
  */
-@WebServlet("/UserForm")
-public class UserForm extends HttpServlet {
+@WebServlet("/UserList")
+public class UserList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+ 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String userId = request.getParameter("id");
 		try{
-			User user;
-			if(userId.length() != 0){
-				user = DAOFactory.getUserDao().getUserById(userId);
-			} else {
-				user = new User();
-			}
-			request.setAttribute("user", user);
-			request.getRequestDispatcher("WEB-INF/pages/UserForm.jsp").forward(request, response);
+			List<User> users = DAOFactory.getUserDao().getAllUsers();
+			request.setAttribute("users", users);
+			request.getRequestDispatcher("JSP/UserList.jsp").forward(request, response);
 		}catch(DAOException e){
 			throw new ServletException(e);
 		}
@@ -44,7 +38,7 @@ public class UserForm extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		// TODO Auto-generated method stub
 	}
 
 }
