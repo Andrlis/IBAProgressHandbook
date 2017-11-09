@@ -60,13 +60,13 @@
 <body>
 <div class="mainForm">
     <div class="topnav" id="myTopnav">
-        <a href="#">LogIn</a>
+        <a href="Login">LogIn</a>
         <a href="#">Send to admin</a>
         <a href="#">Read for admin</a>
     </div>
     <table class="linkTable">
         <tr><td><a href="UserList">Users</a></td><td><a href="StudentList">Students</a></td></tr>
-        <tr><td><a href="#">Studies</a></td><td><a href="MarkList">Marks</a></td></tr>
+        <tr><td><a href="StudyList">Studies</a></td><td><a href="MarkList">Marks</a></td></tr>
         <tr><td><a href="GroupList">Groups</a></td><td><a href="ProfessorList">Professors</a></td></tr>
     </table>
 </div>

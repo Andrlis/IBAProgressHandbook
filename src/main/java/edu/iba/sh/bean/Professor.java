@@ -1,7 +1,5 @@
 package edu.iba.sh.bean;
 
-import java.util.Date;
-
 public class Professor {
 
 	private int id;

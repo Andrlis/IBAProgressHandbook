@@ -45,6 +45,9 @@
         </tr>
     </c:forEach>
 </table>
+    <div style="align-content: center; padding-top: 20px;">
+        <a href="Welcome">Back</a>
+    </div>
 </div>
 </body>
 </html>

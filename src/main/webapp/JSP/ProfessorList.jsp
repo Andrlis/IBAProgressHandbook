@@ -5,13 +5,14 @@
   Time: 1:04
   To change this template use File | Settings | File Templates.
 --%>
+<%@taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@page isELIgnored="false"%>
 <html>
 <head>
     <title>ProfessorList</title>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <meta name="Mark list"
+    <meta name="Professor list"
           content="Rational® Application Developer for WebSphere® Software">
     <style type="text/css">
         .mainForm{
@@ -31,7 +32,7 @@
 </head>
 <body>
 <div class="mainForm">
-    <h1>MarkList</h1>
+    <h1>ProfessorList</h1>
     <table border="1" align="center" width="70%" bordercolor="#006598" cellspacing="0" cellpadding="2">
         <tr>
             <th>ID</th><th>First name</th><th>Father name</th><th>Second name</th><th>Birthday</th><th>AVG mark</th>
@@ -43,6 +44,9 @@
             </tr>
         </c:forEach>
     </table>
+    <div style="align-content: center; padding-top: 20px;">
+        <a href="Welcome">Back</a>
+    </div>
 </div>
 </body>
 </html>

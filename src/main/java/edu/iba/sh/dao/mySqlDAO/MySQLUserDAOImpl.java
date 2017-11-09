@@ -16,7 +16,7 @@ public class MySQLUserDAOImpl extends AbstractSqlDAO implements UserDAO {
             "SELECT USER, PASSWORD, ROLE FROM ibastudentshelper.users";
     private final static String GET_BY_ID_QUERY =
             "SELECT USER, PASSWORD, ROLE FROM ibastudentshelper.users"
-                    + " WHERE ibastudentshelper.users = ?";
+                    + " WHERE USER = ?";
     private final static String SAVE_QUERY =
             "INSERT INTO ibastudentshelper.users (USER, PASSWORD, ROLE)"
                     + " VALUES (?, ?, ?)";
@@ -41,6 +41,7 @@ public class MySQLUserDAOImpl extends AbstractSqlDAO implements UserDAO {
             resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
+                user = new User();
                 user.setUser(resultSet.getString("USER"));
                 user.setPassword(resultSet.getString("PASSWORD"));
                 user.setRole(resultSet.getString("ROLE"));

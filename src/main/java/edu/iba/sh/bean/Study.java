@@ -7,6 +7,7 @@ public class Study {
 	private int hours;
 	private int professorId;
 	private double avgMark;
+
 	public int getId() {
 		return id;
 	}

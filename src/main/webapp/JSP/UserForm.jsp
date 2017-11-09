@@ -35,12 +35,15 @@
             <tr><td>Password:</td><td><input type="password" name="password" value="${user.password}"></td></tr>
             <tr><td>Role:</td><td><input name="role" value="${user.role}"></td></tr>
         </table>
-        <input type="submit" value="SAVE"><br>
+        <input type="submit" value="SAVE" ><br>
 	</form>
 	<form action="#">
 		<input type="hidden" name="oldUser" value="$user.user}"><br>
 		<input type="submit" value="DELETE"><br>
 	</form>
+    <div style="align-content: center; padding-top: 20px;">
+        <a href="UserList">Back</a>
+    </div>
 </div>
 </body>
 </html>
