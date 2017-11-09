@@ -40,9 +40,12 @@
     </tr>
     <c:forEach items="${groups}" var="group">
         <tr>
-            <td>${group.groupNumber}</td><td>${group.avgMark}</td>
+            <td><a href="GroupForm?groupNumber=${group.groupNumber}">${group.groupNumber}</a></td><td>${group.avgMark}</td>
         </tr>
     </c:forEach>
+    <tr>
+        <td colspan="2"><form action="/GroupForm?groupNumber="><input type="submit" value="Add"></form></td>
+    </tr>
 </table>
     <div style="align-content: center; padding-top: 20px;">
         <a href="Welcome">Back</a>

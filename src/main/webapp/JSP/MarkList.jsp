@@ -7,7 +7,6 @@
 --%>
 <%@taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core"%>
 <%@page isELIgnored="false"%>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -40,10 +39,13 @@
     </tr>
     <c:forEach items="${marks}" var="mark">
         <tr>
-            <td>${mark.id}</td><td>${mark.studentId}</td><td>${mark.date}</td><td>${mark.professorId}</td>
+            <td><a href="MarkForm?id=${mark.id}">${mark.id}</a></td><td>${mark.studentId}</td><td>${mark.date}</td><td>${mark.professorId}</td>
             <td>${mark.mark}</td><td>${mark.studyId}</td><td>${mark.comments}</td>
         </tr>
     </c:forEach>
+    <tr>
+        <td colspan="7"><form action="/MarkForm"><input type="submit" value="Add"></form></td>
+    </tr>
 </table>
     <div style="align-content: center; padding-top: 20px;">
         <a href="Welcome">Back</a>

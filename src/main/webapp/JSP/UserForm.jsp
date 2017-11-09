@@ -37,7 +37,7 @@
         </table>
         <input type="submit" value="SAVE" ><br>
 	</form>
-	<form action="#">
+	<form action="UserDelete">
 		<input type="hidden" name="oldUser" value="$user.user}"><br>
 		<input type="submit" value="DELETE"><br>
 	</form>

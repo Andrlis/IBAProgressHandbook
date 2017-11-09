@@ -18,7 +18,10 @@ public class DB2UserDAOImpl extends AbstractDB2DAO implements UserDAO{
             "SELECT \"USER\", PASSWORD, ROLE FROM LAPUSHA.USERS";
     private final static String GET_BY_ID_QUERY =
             "SELECT \"USER\", PASSWORD, ROLE FROM LAPUSHA.USERS"
-                    + " WHERE LAPUSHA.USER = ?";
+                    + " WHERE \"USER\" = ?";
+    private final static String GET_BY_ID_PASSWORD_QUERY =
+            "SELECT \"USER\", PASSWORD, ROLE FROM LAPUSHA.USERS"
+                    + " WHERE \"USER\" = ? AND PASSWORD = ?";
     private final static String SAVE_QUERY =
             "INSERT INTO LAPUSHA.USERS (\"USER\", PASSWORD, ROLE)"
                     + " VALUES (?, ?, ?)";
@@ -40,6 +43,37 @@ public class DB2UserDAOImpl extends AbstractDB2DAO implements UserDAO{
             connection = getConnection();
             statement = connection.prepareStatement(GET_BY_ID_QUERY);
             statement.setString(1, id);
+            resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                user.setUser(resultSet.getString("USER"));
+                user.setPassword(resultSet.getString("PASSWORD"));
+                user.setRole(resultSet.getString("ROLE"));
+            }
+        } catch (SQLException e) {
+            throw new DAOException();
+        } finally {
+            closeDB2Res(resultSet);
+            closeDBStatement(statement);
+            closeDBConnection(connection);
+        }
+
+        return user;
+    }
+
+    @Override
+    public   User getUserByIDandPassword(String userId, String password) throws DAOException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        User user = null;
+
+        try {
+            connection = getConnection();
+            statement = connection.prepareStatement(GET_BY_ID_PASSWORD_QUERY);
+            statement.setString(1, userId);
+            statement.setString(2, password);
             resultSet = statement.executeQuery();
 
             if (resultSet.next()) {

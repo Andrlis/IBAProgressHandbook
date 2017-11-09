@@ -38,7 +38,7 @@
 <div class="mainForm">
     <h2>LogIn</h2>
     ${message}
-    <form action="#" method="post">
+    <form action="Authenticate" method="post">
         <table>
             <tr><td>Login:</td><td><input type="text" name="userId"></td></tr>
             <tr><td>Password:</td><td><input type="password" name="password" id="password"></td></tr>

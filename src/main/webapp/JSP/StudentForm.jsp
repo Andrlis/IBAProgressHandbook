@@ -33,20 +33,23 @@
 </head>
 <body>
 <div class="mainForm">
-<form action="#" method="post">
+<form action="StudentSave" method="post">
     <input type="hidden" name="oldId" value="${student.id}"><br>
     <table>
         <tr><td>First name:</td><td><input type="text" name="firstName" value="${student.firstName}"></td></tr>
         <tr><td>Second name:</td><td><input type="text" name="secondName" value="${student.secondName}"></td></tr>
-        <tr><td>AVG mark:</td><td><input type="text" name="secondName" value="${student.secondName}"></td></tr>
+        <tr><td>AVG mark:</td><td><input type="text" name="avgMark" value="${student.avgMark}"></td></tr>
         <tr><td>Group number:</td><td><input name="groupNumber" value="${student.groupNumber}"></td></tr>
     </table>
     <input type="submit" value="SAVE"><br>
 </form>
-<form action="#">
+<form action="StudentDelete" method="get">
     <input type="hidden" name="oldId" value="${student.id}"><br>
     <input type="submit" value="DELETE"><br>
 </form>
+    <div style="align-content: center; padding-top: 20px;">
+        <a href="Welcome">Back</a>
+    </div>
 </div>
 </body>
 </html>

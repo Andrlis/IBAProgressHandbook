@@ -34,7 +34,7 @@ public class UserSave extends HttpServlet {
 			}
 		
 			request.setAttribute("user", user);
-			request.getRequestDispatcher("WEB-INF/pages/UserForm.jsp").forward(request, response);
+			request.getRequestDispatcher("JSP/UserForm.jsp").forward(request, response);
 		}catch(DAOException e){
 			throw new ServletException(e);
 		}

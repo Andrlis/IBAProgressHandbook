@@ -35,14 +35,17 @@
     <h1>ProfessorList</h1>
     <table border="1" align="center" width="70%" bordercolor="#006598" cellspacing="0" cellpadding="2">
         <tr>
-            <th>ID</th><th>First name</th><th>Father name</th><th>Second name</th><th>Birthday</th><th>AVG mark</th>
+            <th>ID</th><th>First name</th><th>Father name</th><th>Second name</th><th>Date of birth</th><th>AVG mark</th>
         </tr>
         <c:forEach items="${professors}" var="professor">
             <tr>
-                <td>${professor.id}</td><td>${professor.firstName}</td><td>${professor.fatherName}</td><td>${professor.secondName}</td>
+                <td><a href="ProfessorForm?id=${professor.id}">${professor.id}</a></td><td>${professor.firstName}</td><td>${professor.fatherName}</td><td>${professor.secondName}</td>
                 <td>${professor.birthDate}</td><td>${professor.avgMark}</td>
             </tr>
         </c:forEach>
+        <tr>
+            <td colspan="6"><form action="/ProfessorForm"><input type="submit" value="Add"></form></td>
+        </tr>
     </table>
     <div style="align-content: center; padding-top: 20px;">
         <a href="Welcome">Back</a>

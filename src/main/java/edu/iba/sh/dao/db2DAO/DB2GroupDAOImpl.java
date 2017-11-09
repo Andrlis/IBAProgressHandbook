@@ -28,7 +28,7 @@ public class DB2GroupDAOImpl extends AbstractDB2DAO implements GroupDAO {
             "DELETE FROM LAPUSHA.GROUPS WHERE GROUP_NUMBER = ?";
 
     @Override
-    public Group getGroupByNumber(int number) throws DAOException {
+    public Group getGroupByNumber(String number) throws DAOException {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -38,7 +38,7 @@ public class DB2GroupDAOImpl extends AbstractDB2DAO implements GroupDAO {
         try {
             connection = getConnection();
             statement = connection.prepareStatement(GET_BY_NUMBER_QUERY);
-            statement.setInt(1, number);
+            statement.setString(1, number);
             resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
@@ -111,7 +111,7 @@ public class DB2GroupDAOImpl extends AbstractDB2DAO implements GroupDAO {
     }
 
     @Override
-    public void updateGroup(int groupNumber, Group group) throws DAOException {
+    public void updateGroup(String groupNumber, Group group) throws DAOException {
         Connection connection = null;
         PreparedStatement statement = null;
 
@@ -120,7 +120,7 @@ public class DB2GroupDAOImpl extends AbstractDB2DAO implements GroupDAO {
 
             statement = connection.prepareStatement(UPDATE_QUERY);
             statement.setDouble(1, group.getAvgMark());
-            statement.setInt(2, groupNumber);
+            statement.setString(2, groupNumber);
 
             statement.executeUpdate();
         } catch (SQLException e) {

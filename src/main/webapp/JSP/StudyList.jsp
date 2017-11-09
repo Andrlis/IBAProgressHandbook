@@ -37,9 +37,12 @@
         </tr>
         <c:forEach items="${studies}" var="study">
             <tr>
-                <td>${study.id}</td><td>${study.name}</td><td>${study.hours}</td><td>${study.professorId}</td><td>${study.avgMark}</td>
+                <td><a href="StudyForm?id=${study.id}">${study.id}</a></td><td>${study.name}</td><td>${study.hours}</td><td>${study.professorId}</td><td>${study.avgMark}</td>
             </tr>
         </c:forEach>
+        <tr>
+            <td colspan="5"><form action="/StudyForm"><input type="submit" value="Add"></form></td>
+        </tr>
     </table>
     <div style="align-content: center; padding-top: 20px;">
         <a href="Welcome">Back</a>

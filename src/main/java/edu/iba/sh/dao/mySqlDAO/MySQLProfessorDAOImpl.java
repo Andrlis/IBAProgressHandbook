@@ -48,6 +48,7 @@ public class MySQLProfessorDAOImpl extends AbstractSqlDAO implements ProfessorDA
             resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
+                professor = new Professor();
                 professor.setId(resultSet.getInt("ID"));
                 professor.setFirstName(resultSet.getString("FIRST_NAME"));
                 professor.setFatherName(resultSet.getString("FATHER_NAME"));

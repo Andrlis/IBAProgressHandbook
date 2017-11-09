@@ -33,7 +33,7 @@
 </head>
 <body>
 <div class="mainForm">
-<form action="#" method="post">
+<form action="GroupSave" method="post">
     <input type="hidden" name="oldGroupNumber" value="${group.groupNumber}"><br>
     <table>
         <tr><td>Group number:</td><td><input type="text" name="groupNumber" value="${group.groupNumber}"></td></tr>
@@ -41,10 +41,13 @@
     </table>
     <input type="submit" value="SAVE"><br>
 </form>
-<form action="#">
+<form action="GroupDelete" method="get">
     <input type="hidden" name="oldGroupNumber" value="${group.groupNumber}"><br>
     <input type="submit" value="DELETE"><br>
 </form>
+    <div style="align-content: center; padding-top: 20px;">
+        <a href="Welcome">Back</a>
+    </div>
 </div>
 </body>
 </html>

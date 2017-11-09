@@ -27,7 +27,7 @@ public class UserForm extends HttpServlet {
 		String userId = request.getParameter("id");
 		try{
 			User user;
-			if(userId.length() != 0){
+			if(userId != null){
 				user = DAOFactory.getUserDao().getUserById(userId);
 			} else {
 				user = new User();
