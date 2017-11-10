@@ -3,6 +3,7 @@ package edu.iba.sh.dao.mySqlDAO;
 import edu.iba.sh.bean.Professor;
 import edu.iba.sh.dao.DAOException;
 import edu.iba.sh.dao.ProfessorDAO;
+import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MySQLProfessorDAOImpl extends AbstractSqlDAO implements ProfessorDAO {
+
+    private static final Logger logger = Logger.getLogger(MySQLProfessorDAOImpl.class);
+
     private final static String GET_ALL_QUERY =
             "SELECT ID, FIRST_NAME, SECOND_NAME,"
                     + " FATHER_NAME, BIRTH_DATE, AVG_MARK"
@@ -57,6 +61,7 @@ public class MySQLProfessorDAOImpl extends AbstractSqlDAO implements ProfessorDA
                 professor.setAvgMark(resultSet.getDouble("AVG_MARK"));
             }
         } catch (SQLException e) {
+            logger.error(e.getMessage());
             throw new DAOException();
         } finally {
             closeDB(connection,statement,resultSet);
@@ -90,6 +95,7 @@ public class MySQLProfessorDAOImpl extends AbstractSqlDAO implements ProfessorDA
                 professors.add(professor);
             }
         } catch (SQLException e) {
+            logger.error(e.getMessage());
             throw new DAOException();
         } finally {
             closeDB(connection,statement,resultSet);
@@ -116,6 +122,7 @@ public class MySQLProfessorDAOImpl extends AbstractSqlDAO implements ProfessorDA
 
             statement.executeUpdate();
         } catch (SQLException e) {
+            logger.error(e.getMessage());
             throw new DAOException();
         } finally {
             closeDB(connection,statement);
@@ -140,6 +147,7 @@ public class MySQLProfessorDAOImpl extends AbstractSqlDAO implements ProfessorDA
 
             statement.executeUpdate();
         } catch (SQLException e) {
+            logger.error(e.getMessage());
             throw new DAOException();
         } finally {
             closeDB(connection,statement);
@@ -157,6 +165,7 @@ public class MySQLProfessorDAOImpl extends AbstractSqlDAO implements ProfessorDA
             statement.setInt(1, id);
             statement.executeUpdate();
         } catch (SQLException e) {
+            logger.error(e.getMessage());
             throw new DAOException();
         } finally {
             closeDB(connection,statement);

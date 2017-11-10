@@ -10,8 +10,11 @@ import java.util.List;
 import edu.iba.sh.bean.Student;
 import edu.iba.sh.dao.DAOException;
 import edu.iba.sh.dao.StudentDAO;
+import org.apache.log4j.Logger;
 
 public class MySQLStudentDAOImpl extends AbstractSqlDAO implements StudentDAO {
+
+    private static final Logger logger = Logger.getLogger(MySQLStudentDAOImpl.class);
 
     private final static String GET_ALL_QUERY = "SELECT ID, FIRST_NAME, SECOND_NAME, AVG_MARK, GROUP_NUMBER"
             +" FROM ibastudentshelper.students";
@@ -54,6 +57,7 @@ public class MySQLStudentDAOImpl extends AbstractSqlDAO implements StudentDAO {
 
             }
         } catch (SQLException e) {
+            logger.error(e.getMessage());
             throw new DAOException(e);
         } finally {
             closeDB(connection, statement, resultSet);
@@ -86,6 +90,7 @@ public class MySQLStudentDAOImpl extends AbstractSqlDAO implements StudentDAO {
                 students.add(student);
             }
         } catch (SQLException e) {
+            logger.error(e.getMessage());
             throw new DAOException();
         } finally {
            closeDB(connection, statement, resultSet);
@@ -119,6 +124,7 @@ public class MySQLStudentDAOImpl extends AbstractSqlDAO implements StudentDAO {
                 students.add(student);
             }
         } catch (SQLException e) {
+            logger.error(e.getMessage());
             throw new DAOException();
         } finally {
             closeDB(connection, statement, resultSet);
@@ -145,6 +151,7 @@ public class MySQLStudentDAOImpl extends AbstractSqlDAO implements StudentDAO {
 
             statement.executeUpdate();
         }catch (SQLException e) {
+            logger.error(e.getMessage());
             throw new DAOException();
         } finally {
             closeDB(connection,statement);
@@ -169,6 +176,7 @@ public class MySQLStudentDAOImpl extends AbstractSqlDAO implements StudentDAO {
 
             statement.executeUpdate();
         }catch (SQLException e) {
+            logger.error(e.getMessage());
             throw new DAOException();
         } finally {
             closeDB(connection, statement);
@@ -189,6 +197,7 @@ public class MySQLStudentDAOImpl extends AbstractSqlDAO implements StudentDAO {
 
             statement.executeUpdate();
         }catch (SQLException e) {
+            logger.error(e.getMessage());
             throw new DAOException();
         } finally {
            closeDB(connection, statement);

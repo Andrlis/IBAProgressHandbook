@@ -3,6 +3,7 @@ package edu.iba.sh.dao.mySqlDAO;
 import edu.iba.sh.dao.DAOException;
 import edu.iba.sh.dao.UserDAO;
 import edu.iba.sh.bean.User;
+import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MySQLUserDAOImpl extends AbstractSqlDAO implements UserDAO {
+
+    private static final Logger logger = Logger.getLogger(MySQLUserDAOImpl.class);
+
     private final static String GET_ALL_QUERY =
             "SELECT USER, PASSWORD, ROLE FROM ibastudentshelper.users";
     private final static String GET_BY_ID_QUERY =
@@ -50,6 +54,7 @@ public class MySQLUserDAOImpl extends AbstractSqlDAO implements UserDAO {
                 user.setRole(resultSet.getString("ROLE"));
             }
         } catch (SQLException e) {
+            logger.error(e.getMessage());
             throw new DAOException();
         } finally {
             closeDB(connection, statement, resultSet);
@@ -80,6 +85,7 @@ public class MySQLUserDAOImpl extends AbstractSqlDAO implements UserDAO {
                 user.setRole(resultSet.getString("ROLE"));
             }
         } catch (SQLException e) {
+            logger.error(e.getMessage());
             throw new DAOException();
         } finally {
             closeDB(connection, statement, resultSet);
@@ -110,6 +116,7 @@ public class MySQLUserDAOImpl extends AbstractSqlDAO implements UserDAO {
                 users.add(user);
             }
         } catch (SQLException e) {
+            logger.error(e.getMessage());
             throw new DAOException();
         } finally {
             closeDB(connection, statement);
@@ -133,6 +140,7 @@ public class MySQLUserDAOImpl extends AbstractSqlDAO implements UserDAO {
 
             statement.executeUpdate();
         } catch (SQLException e) {
+            logger.error(e.getMessage());
             throw new DAOException();
         } finally {
             closeDB(connection, statement);
@@ -154,6 +162,7 @@ public class MySQLUserDAOImpl extends AbstractSqlDAO implements UserDAO {
 
             statement.executeUpdate();
         } catch (SQLException e) {
+            logger.error(e.getMessage());
             throw new DAOException();
         } finally {
             closeDB(connection, statement);
@@ -171,6 +180,7 @@ public class MySQLUserDAOImpl extends AbstractSqlDAO implements UserDAO {
             statement.setString(1, name);
             statement.executeUpdate();
         } catch (SQLException e) {
+            logger.error(e.getMessage());
             throw new DAOException();
         } finally {
             closeDB(connection, statement);

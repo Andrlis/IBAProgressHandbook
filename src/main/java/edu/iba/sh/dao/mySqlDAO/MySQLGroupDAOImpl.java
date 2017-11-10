@@ -6,12 +6,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.log4j.Logger;
 
 import edu.iba.sh.bean.Group;
 import edu.iba.sh.dao.DAOException;
 import edu.iba.sh.dao.GroupDAO;
 
 public class MySQLGroupDAOImpl extends AbstractSqlDAO implements GroupDAO {
+
+    private static final Logger logger = Logger.getLogger(MySQLGroupDAOImpl.class);
+
     private final static String GET_ALL_QUERY =
             "SELECT GROUP_NUMBER, AVG_MARK FROM ibastudentshelper.groups";
     private final static String GET_BY_NUMBER_QUERY =
@@ -47,6 +51,7 @@ public class MySQLGroupDAOImpl extends AbstractSqlDAO implements GroupDAO {
 
             }
         } catch (SQLException e) {
+            logger.error(e.getMessage());
             throw new DAOException();
         } finally {
             closeDB(connection, statement, resultSet);
@@ -76,6 +81,7 @@ public class MySQLGroupDAOImpl extends AbstractSqlDAO implements GroupDAO {
                 groups.add(group);
             }
         } catch (SQLException e) {
+            logger.error(e.getMessage());
             throw new DAOException();
         } finally {
             closeDB(connection, statement, resultSet);
@@ -98,6 +104,7 @@ public class MySQLGroupDAOImpl extends AbstractSqlDAO implements GroupDAO {
 
             statement.executeUpdate();
         } catch (SQLException e) {
+            logger.error(e.getMessage());
             throw new DAOException();
         } finally {
             closeDB(connection, statement);
@@ -118,6 +125,7 @@ public class MySQLGroupDAOImpl extends AbstractSqlDAO implements GroupDAO {
 
             statement.executeUpdate();
         } catch (SQLException e) {
+            logger.error(e.getMessage());
             throw new DAOException();
         } finally {
             closeDB(connection, statement);
@@ -135,6 +143,7 @@ public class MySQLGroupDAOImpl extends AbstractSqlDAO implements GroupDAO {
             statement.setString(1, groupNumber);
             statement.executeUpdate();
         } catch (SQLException e) {
+            logger.error(e.getMessage());
             throw new DAOException();
         } finally {
             closeDB(connection, statement);

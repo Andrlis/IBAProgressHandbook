@@ -3,6 +3,7 @@ package edu.iba.sh.dao.mySqlDAO;
 import edu.iba.sh.bean.Mark;
 import edu.iba.sh.dao.DAOException;
 import edu.iba.sh.dao.MarkDAO;
+import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MySQLMarkDAOImpl extends AbstractSqlDAO implements MarkDAO{
+
+    private static final Logger logger = Logger.getLogger(MySQLMarkDAOImpl.class);
+
     private final static String GET_ALL_QUERY = "SELECT ID, STUDY_ID, STUDENT_ID, DATE, PROFESSOR_ID, MARK, COMMENTS"
             + " FROM ibastudentshelper.marks";
     private final static String GET_BY_ID_QUERY = "SELECT ID, STUDY_ID, STUDENT_ID, DATE, PROFESSOR_ID, MARK, COMMENTS"
@@ -97,6 +101,7 @@ public class MySQLMarkDAOImpl extends AbstractSqlDAO implements MarkDAO{
                 marks.add(mark);
             }
         } catch (SQLException e) {
+            logger.error(e.getMessage());
             throw new DAOException();
         } finally {
             closeDB(connection, statement, resultSet);
@@ -133,6 +138,7 @@ public class MySQLMarkDAOImpl extends AbstractSqlDAO implements MarkDAO{
                 marks.add(mark);
             }
         } catch (SQLException e) {
+            logger.error(e.getMessage());
             throw new DAOException();
         } finally {
             closeDB(connection, statement, resultSet);
@@ -169,6 +175,7 @@ public class MySQLMarkDAOImpl extends AbstractSqlDAO implements MarkDAO{
                 marks.add(mark);
             }
         } catch (SQLException e) {
+            logger.error(e.getMessage());
             throw new DAOException();
         } finally {
             closeDB(connection, statement, resultSet);
@@ -205,6 +212,7 @@ public class MySQLMarkDAOImpl extends AbstractSqlDAO implements MarkDAO{
                 marks.add(mark);
             }
         } catch (SQLException e) {
+            logger.error(e.getMessage());
             throw new DAOException();
         } finally {
             closeDB(connection, statement, resultSet);
@@ -233,6 +241,7 @@ public class MySQLMarkDAOImpl extends AbstractSqlDAO implements MarkDAO{
 
             statement.executeUpdate();
         }catch (SQLException e) {
+            logger.error(e.getMessage());
             throw new DAOException();
         } finally {
             closeDB(connection, statement);
@@ -259,6 +268,7 @@ public class MySQLMarkDAOImpl extends AbstractSqlDAO implements MarkDAO{
 
             statement.executeUpdate();
         }catch (SQLException e) {
+            logger.error(e.getMessage());
             throw new DAOException();
         } finally {
             closeDB(connection, statement);
@@ -278,6 +288,7 @@ public class MySQLMarkDAOImpl extends AbstractSqlDAO implements MarkDAO{
 
             statement.executeUpdate();
         }catch (SQLException e) {
+            logger.error(e.getMessage());
             throw new DAOException();
         } finally {
             closeDB(connection, statement);
